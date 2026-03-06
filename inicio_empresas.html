@@ -1,113 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InclusionHub | Acceso Corporativo</title>
+    <title>Habilly | Acceso Empresas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         .modal { display: none; }
         .modal.active { display: flex; animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        #registerModal::-webkit-scrollbar {
-            width: 0px;
-        }
+        #registerModal::-webkit-scrollbar { width: 0px; }
     </style>
-    
 </head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col">
 
-
-<body class="bg-emerald-950 text-white font-sans min-h-screen flex items-center justify-center p-4">
-
-    <div class="max-w-md w-full bg-white rounded-[3rem] p-10 shadow-2xl text-slate-900 relative">
-        <!-- Botón para volver al inicio (Aspirantes/Empleados) -->
-        <a href="index.html" class="absolute top-6 right-8 text-slate-300 hover:text-emerald-600 transition-colors">
-            <i class="fas fa-arrow-left text-sm mr-1"></i> <span class="text-[10px] font-bold uppercase">Aspirantes</span>
-        </a>
-
-        <div class="text-center mb-10">
-            <div class="inline-flex p-4 bg-emerald-100 text-emerald-600 rounded-3xl mb-4 shadow-inner">
-                <i class="fas fa-building text-3xl"></i>
-            </div>
-            <h1 class="text-3xl font-black text-emerald-900">Empresas</h1>
-            <p class="text-slate-500 text-sm mt-2">Accede a tu panel de reclutamiento inclusivo</p>
-        </div>
-
-        <form id="loginForm" class="space-y-6">
-            <div>
-                <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 ml-2 tracking-widest">Correo Corporativo</label>
-                <input type="email" id="login-email" required placeholder="nombre@empresa.com" 
-                       class="w-full px-6 py-4 bg-slate-50 border-2 border-transparent rounded-2xl outline-none focus:border-emerald-500 focus:bg-white transition-all">
-            </div>
-            <div>
-                <div class="flex justify-between items-center mb-2 ml-2">
-                    <label class="block text-[10px] font-black uppercase text-slate-400 tracking-widest">Contraseña</label>
-                    <!-- <a href="#" class="text-[10px] font-bold text-emerald-600 hover:underline">¿Olvidaste tu contraseña?</a> -->
+    <!-- Encabezado con Navegación Global -->
+    <header class="bg-white border-b border-slate-200 py-4 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <!-- Logo e Inicio -->
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="bg-indigo-600 text-white p-2 rounded-xl shadow-lg shadow-indigo-100">
+                        <img src="recursos/logo2.png" alt="Logo Habilly" class="w-20 h-20 object-contain"
+                            onerror="this.onerror=null; this.innerHTML='<i class=\'fas fa-handshake-angle text-white\'></i>'; this.type='hidden';">
+                    </div>
+                    <h1 class="text-2xl font-black text-indigo-900 tracking-tight">Habilly</h1>
                 </div>
-                <input type="password" required placeholder="••••••••" 
-                       class="w-full px-6 py-4 bg-slate-50 border-2 border-transparent rounded-2xl outline-none focus:border-emerald-500 focus:bg-white transition-all">
+                
+                <div class="h-6 w-[1px] bg-slate-200 hidden md:block mx-2"></div>
+                
+                <!-- <button onclick="window.location.href='index.html'" class="flex items-center gap-2 text-slate-400 hover:text-indigo-600 font-bold text-sm transition-all group">
+                    <i class="fas fa-home text-lg"></i>
+                    <span>Inicio</span>
+                </button> -->
             </div>
 
-            <button type="submit" id="login-btn" class="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black shadow-xl shadow-emerald-100 hover:bg-emerald-700 transform hover:-translate-y-1 transition-all uppercase tracking-widest text-sm">
-                Entrar al Panel <i class="fas fa-chevron-right ml-2 text-xs"></i>
-            </button>
-        </form>
+            <!-- Selectores de Portal -->
+            <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-2xl w-full md:w-auto">
+                <button onclick="window.location.href='inicio.html'" 
+                    class="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 text-slate-500 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white hover:text-indigo-600 transition-all">
+                    <i class="fas fa-user"></i>
+                    Aspirantes
+                </button>
 
-        <div class="mt-8 pt-8 border-t border-slate-100 text-center">
-            <p class="text-xs text-slate-400 font-bold">¿Aún no eres partner?</p>
-            <button onclick="toggleModal(true)" class="text-emerald-600 font-black text-sm uppercase mt-2 hover:underline tracking-tight">
-                Registrar mi Empresa
-            </button>
+                <button onclick="window.location.href='acceso_empresas.html'" 
+                    class="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-emerald-600 rounded-xl text-xs font-black uppercase tracking-widest shadow-sm border border-slate-200 transition-all">
+                    <i class="fas fa-building"></i>
+                    Empresas
+                </button>
+            </div>
         </div>
-    </div>
+    </header>
+
+    <!-- Formulario de Acceso -->
+    <main class="flex-1 flex items-center justify-center p-6">
+        <div class="max-w-md w-full bg-white rounded-[3rem] p-10 shadow-2xl shadow-slate-200/50 border border-slate-100 relative">
+            
+            <div class="text-center mb-10">
+                <div class="inline-flex p-5 bg-emerald-50 text-emerald-600 rounded-[2rem] mb-4">
+                    <i class="fas fa-city text-4xl"></i>
+                </div>
+                <h2 class="text-3xl font-black text-slate-800">Panel Corporativo</h2>
+                <p class="text-slate-400 text-sm mt-2 font-medium">Gestiona tu talento inclusivo hoy</p>
+            </div>
+
+            <!-- Mensaje de Error (Oculto por defecto) -->
+            <div id="error-msg" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-2xl border border-red-100 text-xs font-bold flex items-center gap-2 animate-bounce">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>Credenciales incorrectas o empresa no registrada.</span>
+            </div>
+
+            <form id="loginForm" class="space-y-6">
+                <div class="space-y-2">
+                    <label class="block text-[10px] font-black uppercase text-slate-400 ml-2 tracking-[0.2em]">Email de Empresa</label>
+                    <div class="relative group">
+                        <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-500 transition-colors"></i>
+                        <input type="email" id="login-email" required placeholder="ejemplo@empresa.com" 
+                               class="w-full pl-12 pr-6 py-4 bg-slate-50 border-2 border-transparent rounded-2xl outline-none focus:border-emerald-500 focus:bg-white transition-all font-medium">
+                    </div>
+                </div>
+                
+                <div class="space-y-2">
+                    <label class="block text-[10px] font-black uppercase text-slate-400 ml-2 tracking-[0.2em]">Contraseña</label>
+                    <div class="relative group">
+                        <i class="fas fa-lock absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-500 transition-colors"></i>
+                        <input type="password" id="login-password" required placeholder="••••••••" 
+                               class="w-full pl-12 pr-6 py-4 bg-slate-50 border-2 border-transparent rounded-2xl outline-none focus:border-emerald-500 focus:bg-white transition-all font-medium">
+                    </div>
+                </div>
+
+                <button type="submit" id="login-btn" class="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black shadow-xl shadow-emerald-200 hover:bg-emerald-700 transform hover:-translate-y-1 transition-all uppercase tracking-widest text-sm flex items-center justify-center gap-3">
+                    <span>Entrar al Panel</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </button>
+            </form>
+
+            <div class="mt-8 pt-8 border-t border-slate-50 text-center">
+                <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mb-3">¿Eres una nueva empresa?</p>
+                <button onclick="toggleModal(true)" class="text-emerald-600 font-black text-sm uppercase hover:text-emerald-700 transition-colors flex items-center justify-center gap-2 mx-auto">
+                    <i class="fas fa-plus-circle"></i>
+                    Registrar mi Organización
+                </button>
+            </div>
+        </div>
+    </main>
 
     <!-- Modal de Registro -->
-    <div id="registerModal" class="modal fixed inset-0 bg-emerald-950/90 backdrop-blur-md z-50 items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white max-w-lg w-full rounded-[2.5rem] p-8 md:p-10 text-slate-900 shadow-2xl relative my-auto">
-            <button onclick="toggleModal(false)" class="absolute top-6 right-6 text-slate-300 hover:text-slate-600 transition-colors">
-                <i class="fas fa-times text-xl"></i>
+    <div id="registerModal" class="modal fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[60] items-center justify-center p-4">
+        <div class="bg-white max-w-lg w-full rounded-[2.5rem] p-10 text-slate-900 shadow-2xl relative">
+            <button onclick="toggleModal(false)" class="absolute top-8 right-8 text-slate-300 hover:text-slate-600 transition-colors">
+                <i class="fas fa-times text-2xl"></i>
             </button>
             
             <div class="mb-8">
-                <h2 class="text-2xl font-black text-emerald-900">Crear Cuenta Empresa</h2>
-                <p class="text-slate-500 text-sm">Únete a la red líder en inclusión laboral.</p>
+                <h2 class="text-2xl font-black text-slate-800">Registro de Partner</h2>
+                <p class="text-slate-400 text-sm font-medium mt-1">Crea tu cuenta corporativa.</p>
             </div>
 
-            <form id="registerForm" class="space-y-4">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[10px] font-black uppercase text-slate-400 mb-1 ml-2">Nombre Comercial</label>
-                        <input type="text" id="reg-name" required placeholder="Ej: TechInclusion" class="w-full px-5 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 transition-all">
+            <form id="registerForm" class="space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Razón Social</label>
+                        <input type="text" id="reg-name" required placeholder="Nombre Empresa" class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 transition-all font-medium">
                     </div>
-                    <div>
-                        <label class="block text-[10px] font-black uppercase text-slate-400 mb-1 ml-2">Sector</label>
-                        <select id="reg-sector" class="w-full px-5 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 appearance-none bg-white">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Sector</label>
+                        <select id="reg-sector" class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 bg-white font-medium">
                             <option>Tecnología</option>
-                            <option>Servicios</option>
-                            <option>Manufactura</option>
-                            <option>Comercio</option>
+                            <option>Retail</option>
+                            <option>Banca / Seguros</option>
+                            <option>Logística</option>
                         </select>
                     </div>
                 </div>
-                <div>
-                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-1 ml-2">Email Corporativo</label>
-                    <input type="email" id="reg-email" required placeholder="hr@tuempresa.com" class="w-full px-5 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 transition-all">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Email de Contacto</label>
+                    <input type="email" id="reg-email" required placeholder="rrhh@empresa.com" class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 transition-all font-medium">
                 </div>
-                <div>
-                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-1 ml-2">Contraseña</label>
-                    <input type="password" required placeholder="••••••••" class="w-full px-5 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 transition-all">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Contraseña</label>
+                    <input type="password" id="reg-password" required placeholder="Mínimo 8 caracteres" class="w-full px-5 py-3.5 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-emerald-500 transition-all font-medium">
                 </div>
                 
-                <div class="flex items-start gap-3 py-2">
-                    <input type="checkbox" required class="mt-1 accent-emerald-600 h-4 w-4">
-                    <p class="text-[10px] text-slate-400 leading-tight">Acepto los términos de compromiso de inclusión y política de privacidad de InclusionHub.</p>
-                </div>
-
-                <button type="submit" id="reg-submit-btn" class="w-full bg-slate-900 text-white py-4 rounded-xl font-black hover:bg-emerald-600 transition-all uppercase tracking-widest text-xs">
-                    Completar Registro
+                <button type="submit" id="reg-submit-btn" class="w-full bg-slate-900 text-white py-4 rounded-xl font-black hover:bg-emerald-600 transition-all uppercase tracking-[0.2em] text-[10px] mt-2">
+                    Finalizar Registro
                 </button>
             </form>
         </div>
@@ -118,36 +156,39 @@
             const modal = document.getElementById('registerModal');
             if(show) {
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
             } else {
                 modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
             }
         }
 
-        // Manejo del Login con Redirección
+        // Manejo del Login ESTRICTO
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('login-email').value;
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
             const btn = document.getElementById('login-btn');
+            const errorBox = document.getElementById('error-msg');
             
-            // Simulación de validación en LocalStorage
+            errorBox.classList.add('hidden'); // Ocultar error anterior
+
+            // Buscar en la base de datos local
             const companies = JSON.parse(localStorage.getItem('hub_companies')) || [];
-            const company = companies.find(c => c.email === email);
+            const company = companies.find(c => c.email === email && c.password === password);
             
             if(company) {
-                // Guardar sesión y redirigir
+                // Éxito: Guardar sesión y redirigir
                 sessionStorage.setItem('current_company', JSON.stringify(company));
-                btn.innerText = "ACCEDIENDO...";
+                
+                btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> <span>CONECTANDO...</span>';
                 btn.disabled = true;
                 
                 setTimeout(() => {
                     window.location.href = 'empresa.html';
                 }, 800);
             } else {
-                // Mensaje de error personalizado en lugar de alert directo si se desea, 
-                // pero mantengo alert para simplicidad según código anterior
-                alert("Empresa no registrada. Por favor, crea una cuenta primero.");
+                // Fallo: Mostrar error y NO redirigir
+                errorBox.classList.remove('hidden');
+                document.getElementById('login-password').value = ''; // Limpiar contraseña por seguridad
             }
         });
 
@@ -156,40 +197,42 @@
             e.preventDefault();
             
             const btn = document.getElementById('reg-submit-btn');
-            const newCompany = {
-                id: 'comp_' + Date.now(),
-                name: document.getElementById('reg-name').value,
-                sector: document.getElementById('reg-sector').value,
-                email: document.getElementById('reg-email').value
-            };
+            const email = document.getElementById('reg-email').value.trim();
+            const name = document.getElementById('reg-name').value.trim();
+            const password = document.getElementById('reg-password').value;
 
             const companies = JSON.parse(localStorage.getItem('hub_companies')) || [];
             
-            if(companies.some(c => c.email === newCompany.email)) {
+            if(companies.some(c => c.email === email)) {
                 alert("Este correo ya está registrado.");
                 return;
             }
 
-            companies.push(newCompany);
+            companies.push({
+                id: 'comp_' + Date.now(),
+                name: name,
+                sector: document.getElementById('reg-sector').value,
+                email: email,
+                password: password // Guardamos la contraseña para validarla luego
+            });
+            
             localStorage.setItem('hub_companies', JSON.stringify(companies));
 
             btn.innerText = "PROCESANDO...";
             btn.disabled = true;
 
             setTimeout(() => {
-                alert("¡Registro exitoso! Ahora puedes entrar con tu correo.");
                 toggleModal(false);
-                btn.innerText = "Completar Registro";
+                document.getElementById('login-email').value = email;
+                alert("¡Registro exitoso! Ahora puedes entrar con tu contraseña.");
+                btn.innerText = "Finalizar Registro";
                 btn.disabled = false;
                 e.target.reset();
-            }, 1000);
+            }, 800);
         });
 
         window.onclick = function(event) {
-            const modal = document.getElementById('registerModal');
-            if (event.target == modal) {
-                toggleModal(false);
-            }
+            if (event.target == document.getElementById('registerModal')) toggleModal(false);
         }
     </script>
 </body>
